@@ -288,11 +288,15 @@ namespace ix
         {
             seconds = time (NULL);
             
-            printf("Before 5s timeout poll: %ld \n", seconds);
+            //printf("Before 5s timeout poll: %ld \n", seconds);
             ret = ::poll(fds, nfds, timeout_5s);
+            if(ret == 0){
+                printf("Timed out on poll returning, time before: %ld, time after %ld \n", seconds, time(NULL));
+                return 0;
+            }
             
-            seconds = time (NULL);
-            printf("After poll, ret: %i       and time now: %ld \n", ret, seconds);
+            //seconds = time (NULL);
+            //printf("After poll, ret: %i       and time now: %ld \n", ret, seconds);
         } while (ret == -1 && errno == EINTR);
 
         return ret;
