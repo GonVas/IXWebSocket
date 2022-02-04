@@ -331,7 +331,7 @@ namespace ix
         }
         else if (pollResult == PollResultType::Timeout)
         {
-            closeSocket();
+            //closeSocket();
             return PollResult::Timeout;
         }
         else if (pollResult == PollResultType::Error)
