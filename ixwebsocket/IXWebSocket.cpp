@@ -376,9 +376,8 @@ namespace ix
             if (_stop && !isClosing()) break;
 
             // 2. Poll to see if there's any new data available
-            printf("Before IXWebSocket Poll\n");
             WebSocketTransport::PollResult pollResult = _ws.poll();
-            printf("After IXWebSocket Poll: %d", pollResult);
+
             
             if(pollResult == WebSocketTransport::PollResult::Timeout){ // probably timeout
 		WebSocketMessageType webSocketMessageType{WebSocketMessageType::Error};
