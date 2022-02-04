@@ -329,6 +329,11 @@ namespace ix
                 return PollResult::AbnormalClose;
             }
         }
+        else if (pollResult == PollResultType::Timeout)
+        {
+            closeSocket();
+            return PollResult::Timeout;
+        }
         else if (pollResult == PollResultType::Error)
         {
             closeSocket();
