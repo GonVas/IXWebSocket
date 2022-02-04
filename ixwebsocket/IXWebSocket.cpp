@@ -388,7 +388,7 @@ namespace ix
                                                                          WebSocketOpenInfo(),
                                                                          WebSocketCloseInfo(),
                                                                          false));
-            std::cout << "IN IXWEBSOCKET POLLRESULT is 0, probably timeout \n";
+            printf("IN IXWEBSOCKET POLLRESULT is 0, probably timeout \n");
                 return; 
             }
             // 3. Dispatch the incoming messages
