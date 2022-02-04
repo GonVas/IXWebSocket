@@ -283,16 +283,16 @@ namespace ix
         //
         int ret = -1;
         int timeout_5s = 5000; // We need 5s of timeout on the poll, IXwebsockets was hard to do this
-        //time_t seconds;
+        time_t seconds;
         do
         {
-            //seconds = time (NULL);
+            seconds = time (NULL);
             
-            //printf("Before 5s timeout poll: %ld \n", seconds);
+            printf("Before 5s timeout poll: %ld \n", seconds);
             ret = ::poll(fds, nfds, timeout_5s);
             
-            //seconds = time (NULL);
-            //printf("After poll, ret: %i       and time now: %ld \n", ret, seconds);
+            seconds = time (NULL);
+            printf("After poll, ret: %i       and time now: %ld \n", ret, seconds);
         } while (ret == -1 && errno == EINTR);
 
         return ret;
