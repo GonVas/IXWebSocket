@@ -7,6 +7,12 @@
 #include "IXNetSystem.h"
 #include <cstdint>
 #include <cstdio>
+
+#include <iostream>
+#include <stdio.h>
+#include <time.h>
+
+
 #ifdef _WIN32
 #include <vector>
 #endif
@@ -276,9 +282,17 @@ namespace ix
         // The style from libuv is as such.
         //
         int ret = -1;
+        int timeout_5s = 5000; // We need 5s of timeout on the poll, IXwebsockets was hard to do this
+        time_t seconds;
         do
         {
-            ret = ::poll(fds, nfds, timeout);
+            seconds = time (NULL);
+            
+            printf("Before 5s timeout poll: %ld \n", seconds);
+            ret = ::poll(fds, nfds, timeout_5s);
+            
+            seconds = time (NULL);
+            printf("After poll, ret: %i       and time now: %ld \n", ret, seconds);
         } while (ret == -1 && errno == EINTR);
 
         return ret;
