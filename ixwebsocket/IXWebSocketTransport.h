@@ -63,7 +63,8 @@ namespace ix
         {
             Succeeded,
             AbnormalClose,
-            CannotFlushSendBuffer
+            CannotFlushSendBuffer,
+            Timeout
         };
 
         using OnMessageCallback =
