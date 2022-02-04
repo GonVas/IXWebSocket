@@ -381,8 +381,9 @@ namespace ix
             printf("After IXWebSocket Poll: %d", pollResult);
             
             if(pollResult == WebSocketTransport::PollResult::Timeout){ // probably timeout
-                _onMessageCallback(ix::make_unique<WebSocketMessage>(WebSocketMessageType webSocketMessageType{WebSocketMessageType::Error},
-                                                                     "timeout",
+		WebSocketMessageType webSocketMessageType{WebSocketMessageType::Error};
+                _onMessageCallback(ix::make_unique<WebSocketMessage>( webSocketMessageType,
+                                                                     timeout_msg,
                                                                       5,
                                                                       WebSocketErrorInfo(),
                                                                       WebSocketOpenInfo(),

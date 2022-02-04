@@ -176,5 +176,7 @@ namespace ix
         std::vector<std::string> _subProtocols;
 
         friend class WebSocketServer;
+
+	std::string timeout_msg = "timeout";
     };
 } // namespace ix
