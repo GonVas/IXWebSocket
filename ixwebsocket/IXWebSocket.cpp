@@ -380,6 +380,17 @@ namespace ix
             WebSocketTransport::PollResult pollResult = _ws.poll();
             printf("After IXWebSocket Poll: %d", pollResult);
             
+            if(pollResult == 0){ // probably timeout
+                    _onMessageCallback(ix::make_unique<WebSocketMessage>(WebSocketMessageType webSocketMessageType{WebSocketMessageType::Error},
+                                                                         "timeout",
+                                                                         5,
+                                                                         WebSocketErrorInfo(),
+                                                                         WebSocketOpenInfo(),
+                                                                         WebSocketCloseInfo(),
+                                                                         false));
+            std::cout << "IN IXWEBSOCKET POLLRESULT is 0, probably timeout \n";
+                return; 
+            }
             // 3. Dispatch the incoming messages
             _ws.dispatch(
                 pollResult,
