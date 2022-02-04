@@ -376,8 +376,10 @@ namespace ix
             if (_stop && !isClosing()) break;
 
             // 2. Poll to see if there's any new data available
+            printf("Before IXWebSocket Poll\n");
             WebSocketTransport::PollResult pollResult = _ws.poll();
-
+            printf("After IXWebSocket Poll: %d", pollResult);
+            
             // 3. Dispatch the incoming messages
             _ws.dispatch(
                 pollResult,
