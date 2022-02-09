@@ -282,7 +282,7 @@ namespace ix
         // The style from libuv is as such.
         //
         int ret = -1;
-        int timeout_5s = 5000; // We need 5s of timeout on the poll, IXwebsockets was hard to do this
+        int timeout_5s = 25000; // We need 5s of timeout on the poll, IXwebsockets was hard to do this
         time_t seconds;
         do
         {
