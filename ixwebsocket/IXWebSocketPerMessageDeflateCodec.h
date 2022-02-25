@@ -36,7 +36,7 @@ namespace ix
         bool endsWithEmptyUnCompressedBlock(const T& value);
 
         int _flush;
-        std::array<unsigned char, 1 << 14> _compressBuffer;
+        std::array<unsigned char, 1 << 15> _compressBuffer;
 
 #ifdef IXWEBSOCKET_USE_ZLIB
         z_stream _deflateState;
